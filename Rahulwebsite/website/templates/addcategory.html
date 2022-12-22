@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+{% block title %} Add Category.. {% endblock title %} 
+
+{% block content %}
+
+ {% if user.is_authenticated %}
+        <h2>Add Category..</h2>
+        <div class = "container">
+          
+            <div class = "form-group">
+                  
+                  <form method="POST">
+                      {% csrf_token %}
+                    {{ form.as_ul }}
+                      <button type="submit" class="btn btn-secondary">Post</button>
+                  </form>
+            
+            </div>
+        </div>
+   {% comment %} action = '{% url 'fatlossPost' post.pk %}' {% endcomment %}
+ {% else %}
+
+    You are not allowed to update the post!!
+
+ {% endif %}
+  
+   
+{% endblock content %}
+ 

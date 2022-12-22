@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+
+
+    <!-- --------- Owl-Carousel ------------------->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+
+    <!-- ------------ AOS Library ------------------------- -->
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+    <!-- Custom Style   -->
+    <link rel="stylesheet" href="{% static 'css/Style.css' %}">
+     <title>{% block title  %}  {% endblock title %}</title>
+</head>
+
+<body>
+
+    <!-- ----------------------------  Navigation ---------------------------------------------- -->
+
+    <nav class="nav">
+        <div class="nav-menu flex-row">
+            <div class="nav-brand">
+                <a href="/" class="text-gray">Rahul Fitness</a>
+            </div>
+            <div class="toggle-collapse">
+                <div class="toggle-icons">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+            <div>
+                <ul class="nav-items">
+                    <li class="nav-link">
+                        <a href="/">Home</a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="blog/fatloss.html">Fat Loss</a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="blog/all about abs.html">All about abs</a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="blog/Supplements.html">Supplements</a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="blog/Nutrition">Nutrition</a>
+                    </li>  
+                    <li class="nav-link">
+                        <a href="blog/Training.html">Training</a>
+                    </li>    
+                    <li class="nav-link">
+                        <a href="/contact.html">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="social text-gray">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </nav>
+ {% block body %}
+ {% endblock body %}
+    <!-- ------------x---------------  Navigation --------------------------x------------------- -->

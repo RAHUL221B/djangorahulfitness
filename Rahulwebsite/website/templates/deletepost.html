@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% block title %} Delete Post.. {% endblock title %} 
+
+{% block content %}
+
+
+ <h2>Delete Post</h2>
+   {% if user.is_authenticated %}
+            
+            <h3>Delete: {{post.title}} </h3>
+            <div class = "container">
+            
+                <div class = "form-group">
+                    
+                    <form method="POST">
+                        {% csrf_token %}
+                        <strong>Are you sure ?</strong><br>
+                        <button type="submit" class="btn btn-secondary">Delete Post!</button>
+                    </form>
+                
+                </div>
+            </div>
+         {% comment %} action = '{% url 'fatlossPost' post.pk %}' {% endcomment %}
+   {% else %}
+
+       You are not allowed to Delete the post!!
+
+   {% endif %}
+  
+   
+{% endblock content %}
+ 

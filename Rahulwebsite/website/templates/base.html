@@ -1,0 +1,314 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> {% block title %}Rahul FItness {% endblock title %} </title>
+    
+   
+     
+     <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="{% static 'website/css/all.css' %}">
+
+
+
+     <link rel="stylesheet" type="text/css" href="{% static 'website/contact/vendor/bootstrap/css/bootstrap-reboot.css' %}">  
+     
+      
+    
+     {% comment %} <!-- --------- Owl-Carousel -------------------> {% endcomment %}
+     
+    <link rel="stylesheet" href="{% static 'website/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/owl.theme.default.min.css' %}">
+    
+    
+    
+
+   
+     
+
+   
+     
+      
+    
+
+    
+    
+
+   
+    
+
+    
+     <!-- ------------ AOS Library ------------------------- -->
+    <link rel="stylesheet" href="{% static 'website/css/aos.css' %}">
+     {% comment %} <script src="{% static 'website/js/aos.js' %}"></script>
+  {% endcomment %}
+    <!-- Custom Style   --> 
+    <link rel="stylesheet" href="{% static 'website/css/Style.css' %}">
+
+    
+
+</head>
+
+<body>
+
+    <!-- ----------------------------  Navigation ---------------------------------------------- -->
+      <nav class="nav navbar-expand-lg sticky-top">
+        <div class="nav-menu flex-row">
+            <div class="nav-brand">
+                <a href="/" class="text-gray">Rahul Fitness</a>
+            </div>
+            <div class="toggle-collapse">
+                <div class="toggle-icons">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+            <div>
+                <ul class="nav-items">
+                  <li class="nav-item {% block homeactive %}{% endblock homeactive %}">
+                  </li>
+
+                  
+
+                  {% if user.is_authenticated %}
+                   
+                     <li class="nav-link"> 
+                         <a href="{% url 'addpost' %}">Add Post..</a>
+                     </li> 
+                      
+                     <li class="nav-link"> 
+                         <a href="{% url 'addcategory' %}">Add Category..</a>
+                     </li> 
+                    
+                     <li class="nav-link"> 
+                         <a href="{% url 'logout' %}">Logout</a>
+                     </li>
+
+                 
+                  {% else %}
+
+                      <li class="nav-link"> 
+                        <a href="{% url 'register' %}">Register</a>
+                      </li>
+
+                      <li class="nav-link"> 
+                         <a href="{% url 'login' %}">Login</a>
+                       </li>
+
+                     
+                 
+                  {% endif %}
+
+                  
+                 
+                    <li class="nav-link"> 
+                        <a href="{% url 'home' %}">Home</a>
+                    </li>
+                  
+                        
+                            <style>
+
+                                    li.dropdown {
+                                            display: inline-block;
+                                                }
+                                        .dropdown-content {
+                                                    display: none;
+                                                    position: absolute;
+                                                    background-color: #85929E ;
+                                                    min-width: 160px;
+                                                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                                                    z-index: 3;
+                                            }
+
+                                        .dropdown-content a {
+                                            color: #8fa0a;
+                                            padding: 12px 16px;
+                                            text-decoration: none;
+                                            display: block;
+                                            text-align: left;
+                                            }
+
+                                        .dropdown-content a:hover {background-color: #f1f1f1;}
+
+                                            .dropdown:hover .dropdown-content {
+                                            display: block;
+                                            }
+                                         
+                                         
+                            
+                            </style>
+                             
+                            {% comment %} {% if cat_menu %} {% endcomment %}
+                                <li class="dropdown nav-link">
+                                        <a href="{% url 'fatloss' %}">Categories</a>
+                                        
+                                            <div class="dropdown-content">
+                                                        {% comment %} {% for item  in cat_menu  %}   {% endcomment %}
+
+                                                               
+                                                                    {% comment %} <a class="dropdown-content" href="{%  url 'category' item|slugify %}">{{item}}</a> {% endcomment %}
+                                                                     <a class="dropdown-item" href="/fatloss">Fatloss</a>
+                                                                     <a class="dropdown-item" href="/abs">Abs</a> 
+                                                                     <a class="dropdown-item" href="/nutrition">Nutrition</a>
+                                                                     <a class="dropdown-item" href="/training">Training</a>
+                                                                     <a class="dropdown-item" href="/Supplements">Supplements</a>
+                                                                    {% comment %} <a href="{% url 'Allaboutabs' %}">All about abs</a>
+                                                                    <a href="{% url 'supplements' %}">Supplements</a>
+                                                                    <a href="{% url 'Nutrition' %}">Nutrition</a>
+                                                                    <a href="{% url 'Training' %}">Training</a>  {% endcomment %}
+                                                        {% comment %} {% endfor %}  {% endcomment %}
+                                            </div>
+                                    
+                                </li> 
+                           {% comment %} {% endif %} {% endcomment %}
+                          
+                        
+                                
+                        
+                                   
+                      
+                   
+                               
+                    {% comment %} {% comment %} {% endcomment %}
+                    {% comment %} <li class="nav-link{% block Allaboutabsactive %} {% endblock Allaboutabsactive %}">
+                        <a href="{% url 'Allaboutabs' %}">All about abs</a>
+                    </li>
+                     <li class="nav-link">
+                        <a href="{% url 'supplements' %}">Supplements</a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'Nutrition' %}">Nutrition</a>
+                    </li>  
+                    <li class="nav-link">
+                        <a href="{% url 'Training' %}">Training</a>
+                    </li>     {% endcomment %}
+                    <li class="nav-link">
+                        <a href="{% url 'contact' %}">Contact Us</a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'calcount' %}">Daily Calorie Counter</a> 
+                    </li>
+                    <form method="get" action="/search" style="margin:auto;max-width:300px">
+                      <input type="text" placeholder="Enter your keywords.." name="query"id="query">
+                      <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                   
+
+                       
+                      
+                    
+              
+                       
+                      
+                    
+                </ul>
+            </div>
+            <div class="social text-gray">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ------------x---------------  Navigation --------------------------x------------------- -->
+ 
+
+{% block content %}
+
+
+
+{% endblock content %}
+
+  
+
+  <!-- --------------------------- Footer ---------------------------------------- -->
+
+    <footer class="footer">
+        <div class="container">
+            <div class="about-us" data-aos="fade-right" data-aos-delay="200">
+                <h2>About us</h2>
+                <p>We help in adding muscles or fatloss for begginners and 9-5 ers</p>
+            </div>
+            <div class="newsletter" data-aos="fade-right" data-aos-delay="200">
+                <h2>Newsletter</h2>
+                <p>Stay update with our latest</p>
+                <div class="form-element">
+                    <input type="text" placeholder="Email"><span><i class="fas fa-chevron-right"></i></span>
+                </div>
+            </div>
+            <div class="instagram" data-aos="fade-left" data-aos-delay="200">
+                <h2>Instagram</h2>
+                <div class="flex-row">
+                    <img src="{% static 'website/assets//23.png' %}" alt="insta1">
+                    <img src="{% static 'website/assets/dumbelsss 13.png' %}" alt="insta2">
+                    <img src="{% static 'website/assets/6.jpg' %}" alt="insta3">
+                </div>
+                <div class="flex-row">
+                    <img src="{% static 'website/assets/21.png' %}" alt="insta4">
+                    <img src="{% static 'website/assets/food pop.jpg' %}" alt="insta5">
+                    <img src="{% static 'website/assets/mirror.jpg' %}" alt="insta6">
+                </div>
+            </div>
+            <div class="follow" data-aos="fade-left" data-aos-delay="200">
+                <h2>Follow us</h2>
+                <p>Let us be Social</p>
+                <div>
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+        <div class="rights flex-row">
+            <h4 class="text-gray">
+                Copyright ©2019 All rights reserved | Rahul Fitness.com  <target="_black"> </i>
+                    </a>
+            </h4>
+        </div>
+        <div class="move-up">
+            <span><i class="fas fa-arrow-circle-up fa-2x"></i></span>
+        </div>
+    </footer>
+
+    <!-- -------------x------------- Footer --------------------x------------------- -->
+    
+    
+
+    <!-- Jquery Library file -->
+    {% comment %} <script src="{% static 'website/contact/js/bootstrap.min.js' %}"></script>  {% endcomment %}
+    <script type ="module" src="{% static 'website/js/Jquery3.4.1.min.js' %}"></script>
+    
+   {% comment %} <!-- --------- Owl-Carousel js -------------------> {% endcomment %}
+     <script type ="module" src="{% static 'website/js/owl.carousel.min.js' %}"></script>
+   
+     
+    
+      
+
+    
+   
+    
+    
+    <!-- Custom Javascript file -->
+    <script type= "module" src="{% static 'website/js/main.js' %}"></script> 
+
+    
+    <!-- ------------ AOS js Library  ------------------------- -->
+    <script src="{% static 'website/js/aos.js' %}"></script>
+    <script>
+      AOS.init();
+   </script>
+    
+    
+    
+    
+</body>
+
+</html>

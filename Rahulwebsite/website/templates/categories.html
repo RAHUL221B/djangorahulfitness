@@ -1,0 +1,241 @@
+
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% block title %} {{cats}} {% endblock title %} 
+ {% comment %} {% block fatlossactive %} active
+                  {% endblock fatlossactive %} {% endcomment %}
+
+
+
+{% block content %}
+
+    <!----------------------------- Main Site Section ------------------------------>
+
+    <main>
+
+        <!------------------------ Site Title ---------------------->
+        <head>
+
+        <section class="site-title">
+            <div class="site-background" data-aos="zoom-in" data-aos-delay="100">
+                <h2>Together  </h2>
+                <h1>We Torch and burn that Fat</h1>
+                <button class="btn">Explore</button>
+          <style> 
+           
+           {% for post in category_posts   %}
+                  main .site-title{
+                      {% if post.header_image %}
+                          background: url({{ post.header_image.url }});
+                       {% endif %}   
+                         background-size:cover;
+                          height: 130vh;
+                           display: flex;
+                            justify-content: center;
+                          }
+           {% endfor %}
+                      main .site-title .site-background{
+                     padding-top: 10rem;
+                     text-align: center;
+                     color: var(--white);
+                 }
+
+                 main .site-title h1, h3{
+                     margin: .3rem;
+                 }
+
+                 main .site-title .btn{
+                     margin: 1.8rem;
+                     background: var(--sky);
+                 }
+
+                 main .site-title .btn:hover{
+                     background: transparent;
+                     border: 1px solid var(--white);
+                     color: var(--white);
+                 }
+               
+          </style>
+
+            </div>
+        </section>
+
+        </head>
+
+        <!------------x----------- Site Title ----------x----------->
+
+        
+ <!-- ---------------------- Site Content -------------------------->
+        
+        <div class="container">
+            <div class="site-content">
+             <div class = "container">
+                {% if category_posts %} 
+                <div class="posts">
+                  {% for post in category_posts   %}
+                    <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="post-image">
+                            <div>
+                                {% if post.header_image %}
+                                  <img src="{{ post.header_image.url }}" class="img" alt="{% static 'website/assets/Blog-post/foodpop.jpg' %}">
+                               
+                               {% else %}
+                                   <img src="{% static 'website/assets/Blog-post/foodpop.jpg' %}"
+
+                               {% endif %}
+                            </div>
+                            <div class="post-info flex-row">
+                                <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;{{post.author}}
+                                {% if user.is_authenticated %}
+                                  
+                                  -<a href="{% url 'updatepost' post.pk %}">Edit<a href="{% url 'deletepost' post.pk %}"> Delete </span>
+                                   
+                                
+                                {% endif %}  
+                                <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;{{post.timestamp}} </span>
+                                <span>2 Comments</span>
+                            </div>
+                        </div>
+                        <div class="post-title">
+                            <a {{post.title}} href='{% url 'fatlossPost' post.pk %}' ></a>
+                             {{post.category}}
+                            <p> {{ post.snippet }}</p>
+                           
+                            
+                            <button class="btn post-btn"><a href='{% url 'fatlossPost' post.pk %}'role = "button">Read More </a> &nbsp; <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                      {% endfor %}
+                      
+                 </div>
+                    
+                    {% else %}
+                        Sorry !! The Category Does Not Exist!!
+                    {% endif %}
+                    </div>
+                    {% include 'pagination.html' with page=category_posts %}
+                   
+                
+            <div class = "container">
+
+                <aside class="sidebar">
+                    <div class="category">
+                        <h2>Category</h2>
+                        <ul class="category-list">
+                            <li class="list-items" data-aos="fade-left" data-aos-delay="100">
+                                <a href="#">Fatloss</a>
+                                <span>(05)</span>
+                            </li>
+                            <li class="list-items" data-aos="fade-left" data-aos-delay="200">
+                                <a href="#">abs</a>
+                                <span>(02)</span>
+                            </li>
+                            <li class="list-items" data-aos="fade-left" data-aos-delay="300">
+                                <a href="#">Build Muscle</a>
+                                <span>(07)</span>
+                            </li>
+                            <li class="list-items" data-aos="fade-left" data-aos-delay="400">
+                                <a href="#">Supplements</a>
+                                <span>(01)</span>
+                            </li>
+                            <li class="list-items" data-aos="fade-left" data-aos-delay="500">
+                                <a href="#">Protein</a>
+                                <span>(08)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="popular-post">
+                        <h2>Popular Post</h2>
+                        <div class="post-content" data-aos="flip-up" data-aos-delay="200">
+                            <div class="post-image">
+                                <div>
+                                    <img src="{% static 'website/assets/23.png' %}" class="img" alt="blog1">
+                                </div>
+                                <div class="post-info flex-row">
+                                    <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
+                                        2019</span>
+                                    <span>2 Commets</span>
+                                </div>
+                            </div>
+                            <div class="post-title">
+                                <a href="#">New data recording system to better analyse road accidents</a>
+                            </div>
+                        </div>
+                        <div class="post-content" data-aos="flip-up" data-aos-delay="300">
+                            <div class="post-image">
+                                <div>
+                                    <img src="{% static 'website/assets/22.png' %}" class="img" alt="blog1">
+                                </div>
+                                <div class="post-info flex-row">
+                                    <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
+                                        2019</span>
+                                    <span>2 Commets</span>
+                                </div>
+                            </div>
+                            <div class="post-title">
+                                <a href="#">Build abs using this simple exercise</a>
+                            </div>
+                        </div>
+                        <div class="post-content" data-aos="flip-up" data-aos-delay="400">
+                            <div class="post-image">
+                                <div>
+                                    <img src="{% static 'website/assets/21.png' %}" class="img" alt="blog1">
+                                </div>
+                                <div class="post-info flex-row">
+                                    <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
+                                        2019</span>
+                                    <span>2 Commets</span>
+                                </div>
+                            </div>
+                            <div class="post-title">
+                                <a href="#">New data recording system to better analyse road accidents</a>
+                            </div>
+                        </div>
+                        <div class="post-content" data-aos="flip-up" data-aos-delay="500">
+                            <div class="post-image">
+                                <div>
+                                    <img src="{% static 'website/assets/6.jpg' %}" class="img" alt="blog1">
+                                </div>
+                                <div class="post-info flex-row">
+                                    <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
+                                        2019</span>
+                                    <span>2 Commets</span>
+                                </div>
+                            </div>
+                            <div class="post-title">
+                                <a href="#">New data recording system to better analyse road accidents</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="newsletter" data-aos="fade-up" data-aos-delay="300">
+                        <h2>Newsletter</h2>
+                        <div class="form-element">
+                            <input type="text" class="input-element" placeholder="Email">
+                            <button class="btn form-btn">Subscribe</button>
+                        </div>
+                    </div>
+                    <div class="popular-tags">
+                        <h2>Popular Tags</h2>
+                        <div class="tags flex-row">
+                            <span class="tag" data-aos="flip-up" data-aos-delay="100">Fatloss</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="200">abs</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="300">shredded</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="400">dietforabs</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="500">sixpackabs</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="600">lifestyle</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="700">nutrition</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="800">project</span>
+                        </div>
+                    </div>
+             </aside>
+         </div>
+                
+        
+        <!-- -----------x---------- Site Content -------------x------------>
+
+    </main>
+{% endblock content %}
+    <!---------------x------------- Main Site Section ---------------x-------------->

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% block title %} Register {% endblock title %} 
+
+{% block content %}
+
+
+ <h2>Please Register to Continue..</h2>
+ <div class = "container">
+  
+    <div class = "form-group">
+           
+           <form method="POST">
+              {% csrf_token %}
+             {{ form.as_ul }}
+              <button type="submit" class="btn btn-secondary">Register</button>
+           </form>
+    
+    </div>
+ </div>
+   {% comment %} action = '{% url 'fatlossPost' post.pk %}' {% endcomment %}
+ 
+  
+   
+{% endblock content %}
+ 

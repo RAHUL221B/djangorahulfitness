@@ -1,0 +1,327 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% comment %} {% block homeactive %} active {% endblock homeactive %} {% endcomment %}
+                
+{% block content %}
+
+    <!----------------------------- Main Site Section ------------------------------>
+
+    <main>
+
+        <!------------------------ Site Title ---------------------->
+
+        <section class="site-title">
+            <div class="site-background" data-aos="fade-up" data-aos-delay="100">
+                <h3>Welcome To</h3>
+                <h1>Rahul Fitness</h1>
+                <button class="btn">Explore</button>
+            </div>
+        </section>
+
+        <!------------x----------- Site Title ----------x----------->
+
+        <!-- --------------------- Blog Carousel ----------------- -->
+         
+        <!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- Somehow I got an error, so I comment the title, just uncomment to show -->
+    <!-- <title>Owl-carousel Cards Slider | CodingNepal</title> -->
+    
+     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="{% static 'website/css/stylecar.css' %}"> 
+  </head>
+  <body>
+    <div class="slider owl-carousel">
+      <div class="card">
+        <div class="img">
+<img src="#" alt=""></div>
+<div class="content">
+          <div class="title">
+Briana Tozour</div>
+<div class="sub-title">
+Graphic Designer</div>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
+<div class="btn">
+            <button>Read more</button>
+          </div>
+</div>
+</div>
+<div class="card">
+        <div class="img">
+<img src="#" alt=""></div>
+<div class="content">
+          <div class="title">
+Pricilla Preez</div>
+<div class="sub-title">
+Web Developer</div>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
+<div class="btn">
+            <button>Read more</button>
+          </div>
+</div>
+</div>
+<div class="card">
+        <div class="img">
+<img src="#" alt=""></div>
+<div class="content">
+          <div class="title">
+Eliana Maia</div>
+<div class="sub-title">
+App Developer</div>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit modi dolorem quis quae animi nihil minus sed unde voluptas cumque.</p>
+<div class="btn">
+            <button>Read more</button>
+          </div>
+</div>
+</div>
+</div>
+<script>
+      $(".slider").owlCarousel({
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 2000, //2000ms = 2s;
+        autoplayHoverPause: true,
+      });
+    </script>
+
+  </body>
+</html>
+
+
+
+        <!-- ----------x---------- Blog Carousel --------x-------- -->
+
+        <!-- ---------------------- Site Content -------------------------->
+      <nav class="nav">
+        <div class="nav-menu flex-row">
+            <div class="nav-brand">
+                <a href="/" class="text-gray">Rahul Fitness</a>
+            </div>
+            <div class="toggle-collapse">
+                <div class="toggle-icons">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+            <div>
+                <ul class="nav-items">
+                  <li class="nav-item {% block homeactive %}{% endblock homeactive %}">
+                  </li>
+
+                  <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown button
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                  </div>
+
+                  {% if user.is_authenticated %}
+                   
+                     <li class="nav-link"> 
+                         <a href="{% url 'addpost' %}">Add Post..</a>
+                     </li> 
+                      
+                     <li class="nav-link"> 
+                         <a href="{% url 'addcategory' %}">Add Category..</a>
+                     </li> 
+                    
+                     <li class="nav-link"> 
+                         <a href="{% url 'logout' %}">Logout</a>
+                     </li>
+
+                 
+                  {% else %}
+
+                      <li class="nav-link"> 
+                        <a href="{% url 'register' %}">Register</a>
+                      </li>
+
+                      <li class="nav-link"> 
+                         <a href="{% url 'login' %}">Login</a>
+                       </li>
+
+                     
+                 
+                  {% endif %}
+
+                 
+                    <li class="nav-link"> 
+                        <a href="{% url 'home' %}">Home</a>
+                    </li>
+                  <li class="nav-item {% block fatlossactive %} {% endblock fatlossactive %}">
+                 </li>
+                    <li class="nav-link">
+                        <a href="{% url 'fatloss' %}">Fat Loss</a>
+                    </li>{% comment %}
+                    <li class="nav-link{% block Allaboutabsactive %} {% endblock Allaboutabsactive %}">
+                        <a href="{% url 'Allaboutabs' %}">All about abs</a>
+                    </li>
+                     <li class="nav-link">
+                        <a href="{% url 'supplements' %}">Supplements</a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'Nutrition' %}">Nutrition</a>
+                    </li>  
+                    <li class="nav-link">
+                        <a href="{% url 'Training' %}">Training</a>
+                    </li>    
+                    <li class="nav-link">
+                        <a href="{% url 'contact' %}">Contact Us</a>
+                    </li>{% endcomment %}
+                    <li class="nav-link">
+                        <a href="{% url 'calcount' %}">Daily Calorie Counter</a> 
+                    </li>
+                    <form method="get" action="/search" style="margin:auto;max-width:300px">
+                      <input type="text" placeholder="Enter your keywords.." name="query"id="query">
+                      <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                   
+
+                       
+                      
+                    
+                </ul>
+            </div>
+                   
+                    <div class="pagination flex-row">
+                        <a href="#"><i class="fas fa-chevron-left"></i></a>
+                        <a href="#" class="pages">1</a>
+                        <a href="#" class="pages">2</a>
+                        <a href="#" class="pages">3</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                <aside class="sidebar">
+                    <div class="category">
+                        <h2>Category</h2>
+                        <ul class="category-list">
+                            <li class="list-items" data-aos="fade-left" data-aos-delay="100">
+                                <a href="#">Fatloss</a>
+                                <span>(05)</span>
+                            </li>
+                            <li class="list-items" data-aos="fade-left" data-aos-delay="200">
+                                <a href="#">abs</a>
+                                <span>(02)</span>
+                            </li>
+                            <li class="list-items" data-aos="fade-left" data-aos-delay="300">
+                                <a href="#">Build Muscle</a>
+                                <span>(07)</span>
+                            </li>
+                            <li class="list-items" data-aos="fade-left" data-aos-delay="400">
+                                <a href="#">Supplements</a>
+                                <span>(01)</span>
+                            </li>
+                            <li class="list-items" data-aos="fade-left" data-aos-delay="500">
+                                <a href="#">Protein</a>
+                                <span>(08)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="popular-post">
+                        <h2>Popular Post</h2>
+                        <div class="post-content" data-aos="flip-up" data-aos-delay="200">
+                            <div class="post-image">
+                                <div>
+                                    <img src="{% static 'website/assets/23.png' %}" class="img" alt="blog1">
+                                </div>
+                                <div class="post-info flex-row">
+                                    <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
+                                        2019</span>
+                                    <span>2 Commets</span>
+                                </div>
+                            </div>
+                            <div class="post-title">
+                                <a href="#">New data recording system to better analyse road accidents</a>
+                            </div>
+                        </div>
+                        <div class="post-content" data-aos="flip-up" data-aos-delay="300">
+                            <div class="post-image">
+                                <div>
+                                    <img src="{% static 'website/assets/22.png' %}" class="img" alt="blog1">
+                                </div>
+                                <div class="post-info flex-row">
+                                    <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
+                                        2019</span>
+                                    <span>2 Commets</span>
+                                </div>
+                            </div>
+                            <div class="post-title">
+                                <a href="#">Build abs using this simple exercise</a>
+                            </div>
+                        </div>
+                        <div class="post-content" data-aos="flip-up" data-aos-delay="400">
+                            <div class="post-image">
+                                <div>
+                                    <img src="{% static 'website/assets/21.png' %}" class="img" alt="blog1">
+                                </div>
+                                <div class="post-info flex-row">
+                                    <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
+                                        2019</span>
+                                    <span>2 Commets</span>
+                                </div>
+                            </div>
+                            <div class="post-title">
+                                <a href="#">New data recording system to better analyse road accidents</a>
+                            </div>
+                        </div>
+                        <div class="post-content" data-aos="flip-up" data-aos-delay="500">
+                            <div class="post-image">
+                                <div>
+                                    <img src="{% static 'website/assets/6.jpg' %}" class="img" alt="blog1">
+                                </div>
+                                <div class="post-info flex-row">
+                                    <span><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
+                                        2019</span>
+                                    <span>2 Commets</span>
+                                </div>
+                            </div>
+                            <div class="post-title">
+                                <a href="#">New data recording system to better analyse road accidents</a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="newsletter" data-aos="fade-up" data-aos-delay="300">
+                        <h2>Newsletter</h2>
+                        <div class="form-element">
+                            <input type="text" class="input-element" placeholder="Email">
+                            <button class="btn form-btn">Subscribe</button>
+                        </div>
+                    </div>
+                    <div class="popular-tags">
+                        <h2>Popular Tags</h2>
+                        <div class="tags flex-row">
+                            <span class="tag" data-aos="flip-up" data-aos-delay="100">Fatloss</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="200">abs</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="300">shredded</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="400">dietforabs</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="500">sixpackabs</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="600">lifestyle</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="700">nutrition</span>
+                            <span class="tag" data-aos="flip-up" data-aos-delay="800">project</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+     {% endfor %}
+        <!-- -----------x---------- Site Content -------------x------------>
+
+    </main>
+{% endblock content %}
+    <!---------------x------------- Main Site Section ---------------x-------------->
+
+
+  

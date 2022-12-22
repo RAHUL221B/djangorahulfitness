@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% block title %} Update Post.. {% endblock title %} 
+
+{% block content %}
+
+{% if user.is_authenticated %}
+   <h2>Update Post..</h2>
+  
+    <div class = "container">
+           
+        <div class = "form-group">
+            <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ form.media }}
+             {{ form.as_ul }}
+              <button type="submit" class="btn btn-secondary">Post</button>
+            </form>
+    
+        </div>
+    </div>
+
+{% else %}
+
+    You are not allowed to update the post!!
+
+{% endif %}
+   {% comment %} action = '{% url 'fatlossPost' post.pk %}' {% endcomment %}
+ 
+  
+   
+{% endblock content %}
+ 
